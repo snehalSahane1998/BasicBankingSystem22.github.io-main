@@ -1,0 +1,26 @@
+extends base.pug 
+block scripts
+   script(src='https://kit.fontawesome.com/cdeac2e8c8.js' crossorigin='anonymous')
+
+block style
+ style
+      include ../static/style.css
+
+block content
+  section#first
+      .box-1 Welcome to the Sparks Bank
+  section#second
+      .box-2 Find us on social media
+      .media
+        .media-1
+          i.fab.fa-facebook
+        .media-1
+          i.fab.fa-twitter-square
+        .media-1
+          i.fab.fa-instagram
+        .media-1
+          i.fab.fa-linkedin
+      div Address - Sector-12,Kharghar,Navi mumbai.
+  footer#footer
+      .center
+        | Copyright &copy; www.thesparksbank.com | All rights reserved.

@@ -1,0 +1,32 @@
+extends base.pug 
+
+block scripts
+  script(src='/static/customer.js')
+
+block style
+ style
+      include ../static/customer.css
+
+block content
+ #btn
+      button.open-button(onclick='openNewCustomerForm()') Add Customer
+      
+
+ // Form HTML
+ #myForm.form-popup
+      form.form-container(action='/addCustomer' , method='post' )
+        h1 Register New Customer.
+        label(for='Customer Name')
+          b Customer Name
+        input#EnterSenderName(type='text' placeholder='Enter Customer Name' name='Customer_Name' required)
+        label(for='Email Addres')
+          b Email
+        input#EnterReceiverName(type='text' placeholder='Enter Customer Email' name='Email' required)
+        label(for='Customer User Name')
+          b Customer User Name
+        input#EnterSenderName(type='text' placeholder='Enter Customer User Name' name='User_Name' required)
+        label(for='Balance')
+          b Amount in Rupees
+        input#enterAmount(type='number' placeholder='Enter Intial Balance Amount' name='Balance' required)
+        button.btn(type='submit' onclick='addCustomer()') Add
+        button.cancel(type='button' onclick='closeForm()') Close

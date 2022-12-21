@@ -1,0 +1,54 @@
+extends base.pug 
+
+block scripts
+  script(src='/static/customer.js')
+
+block style
+ style
+      include ../static/customer.css
+
+block content
+ #btn
+      button.open-button(onclick='openForm()') Send Money
+      button.open-button(onclick='openTransferHistory()') Transfer History
+
+ // Form HTML
+ #myForm.form-popup
+      form.form-container(action='/sendMoney' , method='post' )
+        h1 Send Money
+        label(for='Sender Name')
+          b Sender's Name
+        input#EnterSenderName(type='text' placeholder='Enter Sender Name' name='Sender_Name' required)
+        label(for='Receiver Name')
+          b Receiver's Name
+        input#EnterReceiverName(type='text' placeholder='Enter Receiver Name' name='Receiver_Name' required)
+        label(for='Amount')
+          b Amount in Rupees
+        input#enterAmount(type='number' placeholder='Enter Amount' name='Amount' required)
+        button.btn(type='submit') Send
+        button.cancel(type='button' onclick='closeForm()') Close
+
+ // Transfer History HTML
+ #history.history-popup
+      .historycontainer
+        h4 Transfer History
+        #transaction
+          ol#transactionHistory
+        button.btnclose(type='button' onclick='closeTransferHistory()') Close
+
+ // Table HTML
+ table#table
+      thead#thead
+        tr
+          th NAME
+          th E-MAIL ID
+          th USER NAME
+          th CURRENT BALANCE IN RUPEES
+      tbody
+      each customer in customers
+        tr
+          td #{customer.Customer_Name}
+          td #{customer.Email}
+          td #{customer.User_Name}
+          td#customer.User_Name #{customer.Balance}
+        
